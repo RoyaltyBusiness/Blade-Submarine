@@ -135,63 +135,11 @@ namespace PrecBlade
             float upgradeModifier = Mathf.Pow(0.85f, mv.numEfficiencyModules);
             mv.GetComponent<VehicleFramework.PowerManager>().TrySpendEnergy(scalarFactor * basePowerConsumptionPerSecond * upgradeModifier * Time.deltaTime);
         }
-        //public void Boost(int Boostpower)
-        //{
-        //    UpdateForwardMomentum(Boostpower);
-        //    PlayEngineWhir();
-        //}
-
         public override void FixedUpdate()
         {
             base.FixedUpdate();
 
         }
 
-
-
-
-
-
-
-
-        /*
-        public override void FixedUpdate()
-        {
-            Vector3 moveDirection = Vector3.zero;
-            if (!mv.GetIsUnderwater()) //above water
-            {
-                UpdateEngineWhir(-3f);
-            }
-            else if (mv.CanPilot() && mv.IsPlayerPiloting()) //player piloting
-            {
-                // Get Input Vector
-                moveDirection = GameInput.GetMoveDirection();
-                // Apply controls to the vehicle state
-                ApplyPlayerControls(moveDirection);
-                // Drain power based on Input Vector (and modifiers)
-                // TODO: DrainPower with ApplyPlayerControls...
-                // or would it be better with ExecutePhysicsMove...?
-                DrainPower(moveDirection);
-            }
-            else if(backforth.wheelstate != 0 || leftright.wheelstate != 0 || downup.wheelstate != 0) // valve control
-            {
-                moveDirection = new Vector3(leftright.wheelstate / 10f, downup.wheelstate / 10f, backforth.wheelstate / 10f);
-            }
-            if (moveDirection == Vector3.zero)
-            {
-                UpdateEngineWhir(-3);
-            }
-            else
-            {
-                UpdateEngineWhir(moveDirection.magnitude);
-            }
-            PlayEngineWhir();
-            PlayEngineWhistle(moveDirection);
-
-            // Execute a state-based physics move
-            ExecutePhysicsMove();
-            ApplyDrag(moveDirection);
-        }
-        */
     }
 }
