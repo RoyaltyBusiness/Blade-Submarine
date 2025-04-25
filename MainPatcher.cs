@@ -25,9 +25,10 @@ namespace PrecBlade
             message.ShowMessage(msg, 5);
         }
     }
-    [BepInPlugin("com.royalty.subnautica.PrecBlade.mod", "PrecBlade", "2.0.2")]
+    [BepInPlugin("com.royalty.subnautica.PrecBlade.mod", "PrecBlade", "2.2.1")]
     [BepInDependency("com.mikjaw.subnautica.vehicleframework.mod")]
     [BepInDependency("com.snmodding.nautilus")]
+    [BepInDependency("com.royalty.subnautica.RoyalCommonalities.mod")]
 
     public class MainPatcher : BaseUnityPlugin
     {

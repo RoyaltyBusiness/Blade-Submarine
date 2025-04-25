@@ -16,6 +16,7 @@ using static Nautilus.Assets.PrefabTemplates.FabricatorTemplate;
 using UnityEngine.Assertions;
 using VehicleFramework.Assets;
 using VehicleFramework.Engines;
+using RoyalCommonalities.Items.Materials;
 
 namespace PrecBlade
 {
@@ -32,7 +33,7 @@ namespace PrecBlade
         public static VehicleFramework.Assets.VehicleAssets assets;
         public static void GetAssets()
         {
-            assets = AssetBundleInterface.GetVehicleAssetsFromBundle("assets/oblade", "blade_vehicle", "SpriteAtlas", "BladePing", "BladeCrafter");
+            assets = AssetBundleInterface.GetVehicleAssetsFromBundle("assets/oblade", "blade_vehicle");
         }
         public override Atlas.Sprite CraftingSprite => VehicleFramework.Assets.SpriteHelper.GetSprite("assets/BladeCrafter.png");
         public override Atlas.Sprite PingSprite => VehicleFramework.Assets.SpriteHelper.GetSprite("assets/BladePing.png");
@@ -124,11 +125,11 @@ namespace PrecBlade
                 return list;
             }
         }
-        public override GameObject BoundingBox
+        public override BoxCollider BoundingBoxCollider
         {
             get
             {
-                return transform.Find("BoundingBoxCollider").gameObject;
+                return transform.Find("BoundingBoxCollider").gameObject.GetComponent<BoxCollider>();
             }
         }
         public override GameObject StorageRootObject
@@ -261,10 +262,10 @@ namespace PrecBlade
             get
             {
                 Dictionary<TechType, int> recipe = new Dictionary<TechType, int>();
-                recipe.Add(TechType.TitaniumIngot, 2);
+                recipe.Add(ChromaticIngot.Info.TechType, 2);
+                recipe.Add(EnhancedWiringKit.Info.TechType, 3);
+                recipe.Add(LaminatedGlass.Info.TechType, 2);
                 recipe.Add(TechType.PrecursorIonCrystal, 1);
-                recipe.Add(TechType.CopperWire, 4);
-                recipe.Add(TechType.AdvancedWiringKit, 2);
                 return recipe;
 
             }
@@ -302,7 +303,7 @@ namespace PrecBlade
 
         public override int CrushDepthUpgrade3 => 3500;
 
-        public override int MaxHealth => 10000;
+        public override int MaxHealth => 5000;
 
         public override int Mass => 2400;
         public override int NumModules => 6;
